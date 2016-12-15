@@ -24,7 +24,8 @@ You can also:
 politeknik-learning uses a number of open source plugins :
 
 * [Codeigniter] - Lightweight Framework for web apps!
-* [Twitter Bootstrap] [Materialize] - great UI boilerplate for modern web apps
+* [Twitter Bootstrap] - great UI boilerplate for modern web apps
+* [Materialize] - great UI boilerplate for modern web apps
 * [jQuery] - duh, can't explain it :D
 
 ### Installation
