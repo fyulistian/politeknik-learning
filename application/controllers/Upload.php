@@ -21,9 +21,9 @@ class Upload extends CI_Controller
         if (empty($cekdata)) {
             echo "<script>document.location.href='".base_url('auth')."';</script>";
         } else {
-            $param = $this->session->userdata('email');
-            $upload = $this->Upload_model->get_all_query($param);
-            $nip = $this->Dosen_model->my_nip($param);
+            $param       = $this->session->userdata('email');
+            $upload      = $this->Upload_model->get_all_query($param);
+            $nip         = $this->Dosen_model->my_nip($param);
             $course_data = $this->Course_model->get_data($nip);
             $data = array(
                 'upload_data' => $upload,
@@ -46,9 +46,27 @@ class Upload extends CI_Controller
 
     public function ajax_add()
     {
+        $data = array();
+        $data['error_string'] = array();
+        $data['inputerror'] = array();
+        $data['status'] = TRUE;
         $this->_validate();
         
         $date  = date('Y-m-d H:i:s');
+        $this->db->like('judul_materi', $this->input->post('judul_materi'));
+        $this->db->from('materi');
+        $check1 = $this->db->count_all_results();
+        if($check1 > 0)
+        {
+            $data['inputerror'][] = 'judul_materi';
+            $data['error_string'][] = 'Title already taken';
+            $data['status'] = FALSE;
+        }
+        if($data['status'] === FALSE)
+        {
+            echo json_encode($data);
+            exit();
+        }
         $field = array(
                 'id_course'      => $this->input->post('id_course'),
                 'judul_materi'   => $this->input->post('judul_materi'),
@@ -61,7 +79,6 @@ class Upload extends CI_Controller
         }
         $insert = $this->Upload_model->save($field);
         echo json_encode(array("status" => TRUE));
-        // echo json_encode($data);
     }
 
     public function ajax_edit($id)

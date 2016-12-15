@@ -1,14 +1,6 @@
 <div class="row">
 	<div class="col-md-3 col-sm-3 col-xs-3"></div>
 </div>
-<div class="bg-white">
-    <section class="content content-mini content-mini-full content-boxed overflow-hidden">
-        <ol class="breadcrumb">
-            <li><a class="text-primary-dark" id="back" href="<?php echo base_url('home/course'); ?>">Course</a></li>
-            <li><a href="javascript:void(0)"><?php echo $value['0']->nama_matakuliah; ?></a></li>
-        </ol>
-    </section>
-</div>
 <section class="content content-boxed overflow-hidden">
     <div class="row">
         <div class="col-md-8">

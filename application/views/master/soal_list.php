@@ -51,7 +51,7 @@
         </div>
     </div>
     
-    <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated zoomIn" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -94,14 +94,14 @@
                                     <div class="col-sm-6">
                                         <div class="form-material">
                                             <label for="material-color-primary">Start Date</label>
-                                            <input class="form-control datepicker" type="text" name="tanggal_course" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd">
+                                            <input class="form-control datetimepicker1" type="text" name="tanggal_course" placeholder="yyyy-mm-dd" >
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-material">
                                             <label for="material-color-primary">End Date</label>
-                                            <input class="form-control datepicker" type="text" name="end_course" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd">
+                                            <input class="form-control datetimepicker2" type="text" name="end_course" placeholder="yyyy-mm-dd">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
@@ -152,17 +152,25 @@
 <script src="<?php echo base_url('template/js/jquery-1.11.2.min.js') ?>"></script>
 <script src="<?php echo base_url('template/plugins/datatables/dataTables.bootstrap.js') ?>"></script>
 <script src="<?php echo base_url('template/plugins/datatables/jquery.dataTables.js') ?>"></script>
-<script src="<?php echo base_url('template/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
 <script type="text/javascript">
     var save_method;
 
     $(document).ready(function () {
         $("#mytable").dataTable();
-    });
 
-    $('.datepicker').datepicker({
-        autoclose: true,
-        todayHighlight: true,
+        $('.datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm'
+        });
+        $('.datetimepicker2').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm',
+            useCurrent: false
+        });
+        $(".datetimepicker1").on("dp.change", function (e) {
+            $('.datetimepicker2').data("DateTimePicker").minDate(e.date);
+        });
+        $(".datetimepicker2").on("dp.change", function (e) {
+            $('.datetimepicker1').data("DateTimePicker").maxDate(e.date);
+        });
     });
 
     function reload_table()

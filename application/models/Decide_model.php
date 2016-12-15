@@ -52,6 +52,16 @@ class Decide_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    function get_courses($id, $semester)
+    {
+        $this->db->from('kelas');
+        $this->db->join('jurusan', 'jurusan.id_jurusan = kelas.id_jurusan');
+        $this->db->join('matakuliah', 'matakuliah.id_jurusan = jurusan.id_jurusan');
+        $this->db->where('kelas.id_kelas', $id);
+        $this->db->where('matakuliah.semester', $semester);
+        return $this->db->get()->result();
+    }
+
     function valid_id($param1, $id)
     {
         $this->db->from($this->table);

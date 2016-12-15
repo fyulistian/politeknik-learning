@@ -84,12 +84,11 @@ class Mengajar_model extends CI_Model
 
     function group_by_id($nip)
     {
-        $this->db->from('detail_mengajar');
-        $this->db->join('mengajar', 'mengajar.id_mengajar = detail_mengajar.id_mengajar');
+        $this->db->from('mengajar');
+        $this->db->join('detail_mengajar', 'detail_mengajar.id_mengajar = mengajar.id_mengajar');
         $this->db->join('matakuliah', 'matakuliah.id_matakuliah = mengajar.id_matakuliah');
         $this->db->join('kelas', 'kelas.id_kelas = detail_mengajar.id_kelas');
         $this->db->join('jurusan', 'jurusan.id_jurusan = kelas.id_jurusan');
-        $this->db->join('detail_kelas', 'detail_kelas.id_kelas = kelas.id_kelas');
         $this->db->join('tahun_ajaran', 'tahun_ajaran.id_tahun_ajaran = kelas.id_tahun_ajaran');
         $this->db->where('mengajar.nip', $nip);
         return $this->db->get()->result();
@@ -124,8 +123,9 @@ class Mengajar_model extends CI_Model
     
     function delete_classroom($id)
     {
+        $tables = array('mengajar','group','detail_mengajar');
         $this->db->where('id_mengajar', $id);
-        $this->db->delete('mengajar');
+        $this->db->delete($tables);
     }
 
     function update($id, $data)

@@ -31,9 +31,9 @@ class Group extends CI_Controller {
 
 	public function details($id)
 	{
-		$group  = $this->Group_model->get_group($id);
-		$titles  = $this->Group_model->get_title($id);
-		$title  = $titles->nama_group;
+        $group  = $this->Group_model->get_group($id);
+        $titles = $this->Group_model->get_title($id);
+        $title  = $titles->nama_group;
 		$data = array(
         		'detail_group'	  => $group,
                 'id_group'        => $id,
@@ -73,19 +73,20 @@ class Group extends CI_Controller {
         }
         $id_group = $this->input->post('id_group');
         $config = array(
-            'upload_path' => "./uploads/file/group/",
+            'upload_path'   => "./uploads/file/group/",
             'allowed_types' => "pdf",
-            'overwrite' => FALSE,
-            'max_size' => "40000",
-            'max_width' => "1036",
-            'max_height' => "768"
+            'overwrite'     => FALSE,
+            'max_size'      => "40000",
+            'max_width'     => "1036",
+            'max_height'    => "768",
+            'file_name'     => $this->input->post('group_content')
         );
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('file')) {
             echo json_encode(array("status" => FALSE));
         } else {
-            $ext_data = $this->upload->data();
-            $ext_name = $ext_data['file_ext'];
+            $ext_data     = $this->upload->data();
+            $ext_name     = $ext_data['file_ext'];
             $content_name = $ext_data['file_name'];
             $field = array(
                     'group_file'    => $config['upload_path'].$content_name.$ext_name,
@@ -93,11 +94,9 @@ class Group extends CI_Controller {
                     'publish_date'  => date('Y-m-d H:i:s'),
                     'id_group'      => $id_group,
             );
-            $pub   = $this->Group_model->publish($field);
+            $pub = $this->Group_model->publish($field);
             echo json_encode(array("status" => TRUE));
-            // echo json_encode($field);
         }
-        // echo json_encode($field);
     }
 
     public function ajax_update()

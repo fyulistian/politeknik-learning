@@ -18,8 +18,10 @@ class Decide extends CI_Controller {
         $semester = $smt->semester;
         $class    = $smt->nama_kode.' '.$smt->tahun_masuk.' '.$smt->nama_kelas;
         $decide   = $this->Decide_model->get_class($id, $semester);
+        $decide1  = $this->Decide_model->get_courses($id, $semester);
         $data = array(
-                'value' 	 => $decide,
+                'value'      => $decide,
+                'value1' 	 => $decide1,
                 'semester'   => $semester,
                 'id_kelas'   => $id,
                 'classroom'  => $class,

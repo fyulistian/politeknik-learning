@@ -33,8 +33,9 @@ class Home extends CI_Controller {
 					$param           = $this->session->userdata('nama_user');
 					$nim             = $this->Course_model->get_nim($param);
 					$id              = $nim->nim;
+					$idk             = $this->Group_model->my_class($id);
 					$course          = $this->Course_model->get_all($id);
-					$download_course = $this->Course_model->get_download_course($id);
+					$download_course = $this->Course_model->get_download_course($id, $idk);
 	        		$data = array(
 						'value'    => $course,
 						'download' => $download_course,
@@ -212,11 +213,12 @@ class Home extends CI_Controller {
 
 	public function group()
 	{
-		$group = $this->Group_model->get_all_group();
-		$user = $this->session->userdata('email');
-  		$nim = $this->Mahasiswa_model->my_nim($user);
-        $data = array(
-        		'data_group' => $group,
+		$user  = $this->session->userdata('email');
+		$nim   = $this->Mahasiswa_model->my_nim($user);
+		$idk   = $this->Group_model->my_class($nim);
+		$group = $this->Group_model->get_all_group($idk);
+		$data  = array(
+        		'data_group'  => $group,
 	         	'nim'   	  => $nim,
 	            'home'        => '',
 	            'group'       => 'active',
@@ -229,10 +231,10 @@ class Home extends CI_Controller {
 	public function backToGroup()
 	{
 		$group = $this->Group_model->get_all_group();
-		$user = $this->session->userdata('email');
-  		$nim = $this->Mahasiswa_model->my_nim($user);
-        $data = array(
-        		'data_group' => $group,
+		$user  = $this->session->userdata('email');
+		$nim   = $this->Mahasiswa_model->my_nim($user);
+		$data  = array(
+        		'data_group'  => $group,
 	         	'nim'   	  => $nim,
 	            'home'        => '',
 	            'group'       => 'active',

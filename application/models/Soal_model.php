@@ -23,23 +23,18 @@ class Soal_model extends CI_Model
 
     function course_soal($nip)
     {
-        $this->db->from('mengajar');
-        $this->db->join('matakuliah', 'matakuliah.id_matakuliah = mengajar.id_matakuliah');
+        $this->db->from('matakuliah');
+        $this->db->join('mengajar', 'mengajar.id_matakuliah = matakuliah.id_matakuliah');
         $this->db->where('mengajar.nip', $nip);
         $query = $this->db->get();
         return $query->result();
     }
 
-    function get_all_query()
+    function get_all_query($nip)
     {
-        // $param = $this->session->userdata('email');
         $this->db->from('course');
-        // $this->db->join('course', 'course.id_course = soal.id_course');
         $this->db->join('matakuliah', 'matakuliah.id_matakuliah = course.id_matakuliah');
-        $this->db->join('dosen', 'dosen.nip = course.nip');
-        // $this->db->join('user', 'user.email = dosen.email');
-        // $this->db->where('user.email', $param);
-        // $this->db->group_by(array('soal.id_course', 'matakuliah.nama_matakuliah'));
+        $this->db->where('nip', $nip);
         $query = $this->db->get();
         return $query->result();
     }

@@ -15,10 +15,24 @@ class Mahasiswa_model extends CI_Model
         parent::__construct();
     }
 
+    public function total_collager()
+    {
+        $this->db->select($this->id);
+        $this->db->from($this->table);
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
     public function my_nim($email) 
     {
         $data = $this->db->query("SELECT * FROM mahasiswa WHERE email = '$email' ")->result_array();
         return $data[0]['nim'];
+    }
+
+    public function my_email($nim) 
+    {
+        $data = $this->db->query("SELECT * FROM mahasiswa WHERE nim = '$nim' ")->result_array();
+        return $data[0]['email'];
     }
 
     public function my_name($email) 
@@ -30,9 +44,6 @@ class Mahasiswa_model extends CI_Model
     function get_all_query()
     {
         $this->db->from('mahasiswa');
-        $this->db->join('detail_kelas', 'detail_kelas.nim = mahasiswa.nim');
-        $this->db->join('kelas', 'kelas.id_kelas = detail_kelas.id_kelas');
-        $this->db->join('jurusan', 'jurusan.id_jurusan = kelas.id_jurusan');
         return $this->db->get()->result();
     }
 
@@ -55,9 +66,6 @@ class Mahasiswa_model extends CI_Model
     function get_all_by_id($id)
     {   
         $this->db->from($this->table);
-        $this->db->join('detail_kelas', 'detail_kelas.nim = mahasiswa.nim');
-        $this->db->join('kelas', 'kelas.id_kelas = detail_kelas.id_kelas');
-        $this->db->join('jurusan', 'jurusan.id_jurusan = kelas.id_jurusan');
         $this->db->where('mahasiswa.nim', $id);
         return $this->db->get()->row();
     }
@@ -79,8 +87,9 @@ class Mahasiswa_model extends CI_Model
     // delete data
     function delete($nim)
     {
-        $this->db->where($this->id, $nim);
-        $this->db->delete($this->table);
+        $tables = array('user','mahasiswa');
+        $this->db->where('email', $nim);
+        $this->db->delete($tables);
     }
 
 }

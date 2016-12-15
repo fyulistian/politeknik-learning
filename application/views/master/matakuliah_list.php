@@ -2,8 +2,6 @@
     <div class="block">
         <div class="block-content">
             <div class="font-w600 font-s12 text-uppercase text-muted push-10">Course</div>
-            <?php //echo $smt ?>
-            <?php //echo $jur ?>
             <section class='content'>
                 <div class='row'>
                     <div class='col-xs-12'>
@@ -73,7 +71,7 @@
                                             <div class="form-group">
                                                 <div class="col-sm-12">
                                                     <div class="form-material form-material-primary">
-                                                        <label for="material-color-primary">Course Name</label>
+                                                        <label for="material-color-primary">Courses Name</label>
                                                         <input class="form-control" type="text" id="material-color-primary" name="nama_matakuliah"maxlength="35">
                                                         <span class="help-block"></span>
                                                     </div>

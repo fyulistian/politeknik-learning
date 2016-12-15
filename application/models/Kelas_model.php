@@ -20,7 +20,16 @@ class Kelas_model extends CI_Model
         $this->db->from('kelas');
         $this->db->join('jurusan', 'jurusan.id_jurusan = kelas.id_jurusan');
         $this->db->join('tahun_ajaran', 'tahun_ajaran.id_tahun_ajaran = kelas.id_tahun_ajaran');
-        $this->db->order_by('nama_kelas', $this->order);
+        $this->db->order_by('semester', $this->order);
+        return $this->db->get()->result();
+    }
+
+    function get_all_combo()
+    {
+        $this->db->from('kelas');
+        $this->db->join('jurusan', 'jurusan.id_jurusan = kelas.id_jurusan');
+        $this->db->join('tahun_ajaran', 'tahun_ajaran.id_tahun_ajaran = kelas.id_tahun_ajaran');
+        $this->db->order_by('jurusan.id_jurusan', $this->order);
         return $this->db->get()->result();
     }
 

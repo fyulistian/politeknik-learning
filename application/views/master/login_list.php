@@ -41,8 +41,8 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    
+    <div class="modal animated fadeInRight" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
       <div class="modal-dialog modal-dialog-top">
           <div class="modal-content">
               <div class="block block-themed block-transparent remove-margin-b">
@@ -58,19 +58,21 @@
                       <div class="modal-body form">
                           <div class="block-content block-content-narrow form-horizontal push-10-t">
                           <div class="form-group">
-                              <div class="col-sm-4">
-                                  <div class="form-material">
-                                      <input class="form-control" type="text" id="material-disabled" name="nama_user" disabled="">
-                                      <label for="material-disabled">Username</label>
-                                  </div>
-                              </div>
-                              <div class="col-sm-4">
+                            <div class="col-sm-12">
                                   <div class="form-material">
                                       <input class="form-control" type="text"  id="material-disabled" name="email" disabled="">
                                       <label for="material-disabled">Email</label>
                                   </div>
                               </div>
-                              <div class="col-sm-4">
+                          </div>
+                          <div class="form-group">
+                              <div class="col-sm-6">
+                                  <div class="form-material">
+                                      <input class="form-control" type="text" id="material-disabled" name="nama_user" disabled="">
+                                      <label for="material-disabled">Username</label>
+                                  </div>
+                              </div>
+                              <div class="col-sm-6">
                                   <div class="form-material">
                                       <input class="form-control" type="text"  id="material-disabled" name="level" disabled="">
                                       <label for="material-disabled">Level</label>

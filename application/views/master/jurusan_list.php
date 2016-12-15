@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInLeft" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -98,7 +98,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInRight" id="modal_edit" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -145,7 +145,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated zoomIn" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">

@@ -23,7 +23,7 @@ class Soal extends CI_Controller
         } else {
             $user = $this->session->userdata('email');
             $nip  = $this->Dosen_model->my_nip($user);
-            $soal = $this->Soal_model->get_all_query();
+            $soal = $this->Soal_model->get_all_query($nip);
             $qst  = $this->Soal_model->course_soal($nip);
             $data = array(
                         'soal_data'   => $soal,

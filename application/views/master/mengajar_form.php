@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated zoomIn" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -185,7 +185,7 @@
             dataType: "JSON",
             success: function(data)
             {
-                console.log(data);
+                // console.log(data);
                 if(data.status) 
                 {
                     $('#modal_form').modal('hide');
@@ -202,7 +202,7 @@
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
-                console.log(jqXHR, textStatus, errorThrown);
+                // console.log(jqXHR, textStatus, errorThrown);
                 swal("Oops", "We couldn't connect to the server !", "error");
                 $('#btnSave').text('save'); 
                 $('#btnSave').attr('disabled',false); 

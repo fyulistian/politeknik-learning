@@ -41,7 +41,7 @@ class Mengajar extends CI_Controller
     {
         $this->load->model('Kelas_model');
         $mengajar = $this->Mengajar_model->group_by_id($nip);
-        $classroom = $this->Kelas_model->get_all();
+        $classroom = $this->Kelas_model->get_all_combo();
         $data = array(
             'ajar'       => $mengajar,
             'data_class' => $classroom,
@@ -129,6 +129,7 @@ class Mengajar extends CI_Controller
         $insert = $this->Mengajar_model->insert_classroom($field);
         $fieldM = array(
                 'nip'             => $nip,
+                'id_mengajar'     => $insert,
                 'nama_group'      => $group_name.' - '.$matakuliah->nama_matakuliah,
                 'pembuatan_group' => date('Y-m-d H:i:s'),
             );

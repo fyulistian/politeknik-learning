@@ -7,6 +7,16 @@ class Forum_model extends CI_Model {
     public $id = 'id_forum';
     public $order = 'DESC';
 
+    public function total_forum($id)
+    {
+        $this->db->select($this->id);
+        $this->db->from($this->table);
+        $this->db->join('course', 'course.id_course = forum.id_course');
+        $this->db->where('course.nip', $id);
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
 	function get_all_query($id_course, $nip)
     {
         $this->db->from($this->table);
@@ -19,20 +29,28 @@ class Forum_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-    function get_all_query_group_by()
+    function get_all_query_group_by($nip)
     {
-        $this->db->from($this->table);
-        $this->db->join('course', 'course.id_course = forum.id_course');
+        $this->db->from('course');
         $this->db->join('dosen', 'dosen.nip = course.nip');
         $this->db->join('matakuliah', 'matakuliah.id_matakuliah = course.id_matakuliah');
+        $this->db->where('course.nip', $nip);
         $this->db->group_by('course.nama_course');
         return $this->db->get()->result();
+    }
+
+    function getCourse($nip)
+    {
+        $this->db->from('course');
+        $this->db->where('nip', $nip);
+        $query = $this->db->get();
+        return $query->result();
     }
 
     function get_all_forum_group_by()
     {
         $user = $this->session->userdata('email');
-        $nim = $this->Mahasiswa_model->my_nim($user);
+        $nim  = $this->Mahasiswa_model->my_nim($user);
         $this->db->from('forum');
         $this->db->join('course', 'course.id_course = forum.id_course');
         $this->db->join('matakuliah', 'matakuliah.id_matakuliah = course.id_matakuliah');

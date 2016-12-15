@@ -60,20 +60,16 @@ class Dosen extends CI_Controller
             $data['error_string'][] = 'email already taken';
             $data['status'] = FALSE;
         }
-        $this->db->like('nip', $this->input->post('nip'));
-        $this->db->from('dosen');
-        $check1 = $this->db->count_all_results();
-        if($check1 > 0)
-        {
-            $data['inputerror'][] = 'nip';
-            $data['error_string'][] = 'Code already taken';
-            $data['status'] = FALSE;
-        }
-        if($this->input->post('nip') == '')
-        {
-            $data['inputerror'][] = 'nip';
-            $data['error_string'][] = 'Code is required';
-            $data['status'] = FALSE;
+        if ($this->input->post('nidn') != '') {
+            $this->db->like('nidn', $this->input->post('nidn'));
+            $this->db->from('dosen');
+            $check1 = $this->db->count_all_results();
+            if($check1 > 0)
+            {
+                $data['inputerror'][] = 'nidn';
+                $data['error_string'][] = 'NIDN already taken';
+                $data['status'] = FALSE;
+            }   
         }
         if($data['status'] === FALSE)
         {
@@ -84,7 +80,8 @@ class Dosen extends CI_Controller
         $options   = array('cost' => 11);
         $nama_user = substr($this->input->post('nama_depan'), 0, 1).$this->input->post('nama_belakang');
         $field = array(
-                    'nip'           => $this->input->post('nip'),
+                    'nip'           => date('Ymd.His'),
+                    'nidn'          => strtolower($this->input->post('nidn')),
                     'nama_depan'    => strtolower($this->input->post('nama_depan')),
                     'nama_belakang' => strtolower($this->input->post('nama_belakang')),
                     'gender'        => strtolower($this->input->post('gender')),
@@ -97,7 +94,7 @@ class Dosen extends CI_Controller
                     'email'         => strtolower($this->input->post('email')),
                     'nama_user'     => strtolower($nama_user),
                     'password'      => password_hash($pass,PASSWORD_BCRYPT,$options),
-                    'level'         => strtolower($this->input->post('level')),
+                    'level'         => 'dosen'
             );
         $save   = $this->Login_model->insert($user);
         $insert = $this->Dosen_model->insert($field);
@@ -116,6 +113,7 @@ class Dosen extends CI_Controller
         $this->load->model('Login_model');
         $this->_validate();
         $field = array(
+                'nidn'          => strtolower($this->input->post('nidn')),
                 'nama_depan'    => strtolower($this->input->post('nama_depan')),
                 'nama_belakang' => strtolower($this->input->post('nama_belakang')),
                 'gender'        => strtolower($this->input->post('gender')),
@@ -138,7 +136,8 @@ class Dosen extends CI_Controller
         if (!$dosen->gambar == './uploads/img/default.jpg') {
             if(file_exists($dosen->gambar) && $dosen->gambar) unlink($dosen->gambar);   
         }
-        $this->Dosen_model->delete($nip);
+        $param = $this->Dosen_model->my_email($nip);
+        $this->Dosen_model->delete($param);
         echo json_encode(array("status" => TRUE));
     }
 

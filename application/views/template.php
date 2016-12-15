@@ -27,19 +27,26 @@
         <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url('template/img/favicons/apple-touch-icon-152x152.png') ?>">
         <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url('template/img/favicons/apple-touch-icon-180x180.png') ?>">
         <!-- END Icons -->
+        
         <!-- Stylesheets -->
         <!-- Web fonts -->
         <link rel='stylesheet' href="<?php echo base_url('template/css/sourcesanspro.css') ?>">
+
         <!-- Page JS Plugins CSS -->
         <link rel="stylesheet" href="<?php echo base_url('template/js/plugins/bootstrap-datepicker/bootstrap-datepicker3.min.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('template/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('template/js/plugins/slick/slick.min.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('template/js/plugins/slick/slick-theme.min.css') ?>">
+
         <!-- Bootstrap and OneUI CSS framework -->
         <link rel="stylesheet" href="<?php echo base_url('template/css/bootstrap.min.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('template/css/material.min.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('template/css/dataTables.material.min.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('template/css/sweetalert2.css') ?>">
         <link rel="stylesheet" id="css-main" href="<?php echo base_url('template/css/oneui.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('template/css/themes/city.min.css') ?>">
         <!-- END Stylesheets -->
+        
     </head>
     <body>
     <!-- Page Container -->
@@ -180,6 +187,7 @@
                 </div>
             </footer>
         </div>
+        
         <!-- OneUI Core JS -->
         <script src="<?php echo base_url('template/js/jquery-1.11.2.min.js') ?>"></script>
         <script src="<?php echo base_url('template/js/core/bootstrap.min.js') ?>"></script>
@@ -191,10 +199,13 @@
         <script src="<?php echo base_url('template/js/core/js.cookie.min.js') ?>"></script>
         <script src="<?php echo base_url('template/js/app.js') ?>"></script>
         <script src="<?php echo base_url('template/js/sweetalert2.min.js') ?>"></script>
+
         <!-- Page Plugins -->
         <script src="<?php echo base_url('template/js/plugins/slick/slick.min.js') ?>"></script>
-        <script src="<?php echo base_url('template/js/plugins/chartjs/Chart.min.js') ?>"></script>
+        <script src="<?php echo base_url('template/js/plugins/bootstrap-datetimepicker/moment.min.js') ?>"></script>
         <script src="<?php echo base_url('template/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
+        <script src="<?php echo base_url('template/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') ?>"></script>
+
         <!-- Page JS Code -->
         <script src="<?php echo base_url('template/js/pages/base_pages_dashboard.js') ?>"></script>
         <script src="<?php echo base_url('template/plugins/datatables/jquery.dataTables.min.js') ?>"></script>
@@ -202,25 +213,7 @@
         <script src="<?php echo base_url('template/js/pages/base_forms_pickers_more.js') ?>"></script>
         <script>
             jQuery(function () {
-                App.initHelpers('slick');
-            });
-        </script>
-        <script>
-            jQuery(function () {
-                App.initHelpers(['datepicker', 'datetimepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']);
-            });
-        </script>
-        <script>
-            $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false
-                });
+                App.initHelpers(['datepicker', 'datetimepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs', 'slick']);
             });
         </script>
     </body>

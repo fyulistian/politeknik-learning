@@ -15,6 +15,14 @@ class Matakuliah_model extends CI_Model
         parent::__construct();
     }
 
+    public function total_courses()
+    {
+        $this->db->select($this->id);
+        $this->db->from($this->table);
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
     // get all
     function get_all()
     {

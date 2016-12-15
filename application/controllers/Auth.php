@@ -56,32 +56,38 @@ class Auth extends CI_Controller {
         	if ($this->session->userdata('level')=="dosen") {
         		$setting = $this->Auth_model->get_setting_dsn();
 	            $data = array(
-	            	'setting'		=> $setting,
-					'dashboard' 	=> 'active',
-	                'soal'      	=> '',
-	                'upload'    	=> ''
+					'setting'   => $setting,
+					'dashboard' => 'active',
+					'soal'      => '',
+					'forum'     => '',
+					'group'     => '',
+					'upload'    => ''
 				);
 	        	$this->template->load('template','auth/setting', $data);
         	} else if ($this->session->userdata('level')=="mahasiswa") {
         		$setting = $this->Auth_model->get_setting_mhs();
 	            $data = array(
-	            	'setting'		=> $setting,
-					'dashboard' 	=> 'active',
-	                'soal'      	=> '',
-	                'upload'    	=> ''
+					'setting'   => $setting,
+					'dashboard' => 'active',
+					'soal'      => '',
+					'upload'    => ''
 				);
 	        	$this->template->load('template','auth/setting', $data);
         	} else {
         		$setting = $this->Auth_model->get_setting_adm();
 	            $data = array(
-	            	'setting'		=> $setting,
-					'dashboard' 	=> 'active',
-	                'soal'      	=> '',
-	                'user'       => '',
-	                'dosen'      => '',
-	                'jurusan'    => '',
-	                'mahasiswa'  => '',
-	                'upload'    	=> ''
+					'setting'   => $setting,
+					'dashboard' => 'active',
+					'soal'      => '',
+					'matakuliah'=> '',
+					'kelas'		=> '',
+					'angkatan'	=> '',
+					'mengajar'	=> '',
+					'user'      => '',
+					'dosen'     => '',
+					'jurusan'   => '',
+					'mahasiswa' => '',
+					'upload'    => ''
 				);
 	        	$this->template->load('template','auth/setting', $data);
         	}
@@ -125,28 +131,30 @@ class Auth extends CI_Controller {
 				}
             } else {
             	if ($passwordnew == $passwordconfirm) {
-                $check = $this->Auth_model->cekPass($email);
-                $hash = $check['password'];
-                if (password_verify($password, $hash)) {
-                	$options = array('cost' => 11);
-                	if (password_needs_rehash($hash, PASSWORD_BCRYPT, $options)) {
-				        $newHash = password_hash($passwordconfirm, PASSWORD_BCRYPT, $options);
-				        $cekdata  = $this->Auth_model->updPass($email,$newHash);
-	                    if ($cekdata == 1) {
-	                    	echo "<script>alert('Password Changed, Please Login Again !!');document.location.href='".base_url('auth/logout')."';</script>";
-	                    }
-				    } else {
-				    	$newHash = password_hash($passwordconfirm, PASSWORD_BCRYPT, $options);
-				    	$cekdata  = $this->Auth_model->updPass($email,$newHash);
-	                    if ($cekdata == 1) {
-	                    	echo "<script>alert('Password Changed, Please Login Again !!');document.location.href='".base_url('auth/logout')."';</script>";
-	                    }
-				    }
+	                $check = $this->Auth_model->cekPass($email);
+	                $hash = $check['password'];
+	                if (password_verify($password, $hash)) {
+	                	$options = array('cost' => 11);
+	                	if (password_needs_rehash($hash, PASSWORD_BCRYPT, $options)) {
+					        $newHash = password_hash($passwordconfirm, PASSWORD_BCRYPT, $options);
+					        $cekdata  = $this->Auth_model->updPass($email,$newHash);
+		                    if ($cekdata == 1) {
+		                    	echo "<script>alert('Password Changed, Please Login Again !!');document.location.href='".base_url('auth/logout')."';</script>";
+		                    }
+					    } else {
+					    	$newHash = password_hash($passwordconfirm, PASSWORD_BCRYPT, $options);
+					    	$cekdata  = $this->Auth_model->updPass($email,$newHash);
+		                    if ($cekdata == 1) {
+		                    	echo "<script>alert('Password Changed, Please Login Again !!');document.location.href='".base_url('auth/logout')."';</script>";
+		                    }
+					    }
 					} else {
-					    echo "<script>alert('Incorrect Password');document.location.href='".base_url('auth/setting')."';</script>";
+					    $this->session->set_flashdata('notification', 'Old Password Wrong, Make Sure Password is Right !!');
+					    echo "<script>history.go(-1);</script>";
 					}
 	            } else {
-	                echo "<script>alert('Wrong Confirm');document.location.href='".base_url('auth/setting')."';</script>";
+	                $this->session->set_flashdata('notification', 'Password Confirm Wrong, Make Sure Confirm is Right !!');
+	                echo "<script>history.go(-1);</script>";
 	            }
             }
         }

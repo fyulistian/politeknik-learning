@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-lg-2">
                             <a class="block block-link-hover2" id="semester1" href="javascript:void(0)">
-                                <div class="block-content block-content-full bg-flat clearfix" id="colored1">
+                                <div class="block-content block-content-full bg-primary-dark clearfix" id="colored1">
                                     <span class="fa-stack text-white pull-right">
                                       <strong class="fa-stack-2x fa-lg">1</strong>
                                     </span>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-lg-2">
                             <a class="block block-link-hover2" id="semester3" href="javascript:void(0)">
-                                <div class="block-content block-content-full bg-warning clearfix" id="colored3">
+                                <div class="block-content block-content-full bg-primary-dark clearfix" id="colored3">
                                     <span class="fa-stack text-white pull-right">
                                       <strong class="fa-stack-2x fa-lg">3</strong>
                                     </span>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-lg-2">
                             <a class="block block-link-hover2" id="semester4" href="javascript:void(0)">
-                                <div class="block-content block-content-full bg-amethyst clearfix" id="colored4">
+                                <div class="block-content block-content-full bg-primary-dark clearfix" id="colored4">
                                     <span class="fa-stack text-white pull-right">
                                       <strong class="fa-stack-2x fa-lg">4</strong>
                                     </span>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-lg-2">
                             <a class="block block-link-hover2" id="semester5" href="javascript:void(0)">
-                                <div class="block-content block-content-full bg-city clearfix" id="colored5">
+                                <div class="block-content block-content-full bg-primary-dark clearfix" id="colored5">
                                     <span class="fa-stack text-white pull-right">
                                       <strong class="fa-stack-2x fa-lg">5</strong>
                                     </span>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-lg-2">
                             <a class="block block-link-hover2" id="semester6" href="javascript:void(0)">
-                                <div class="block-content block-content-full bg-modern clearfix" id="colored6">
+                                <div class="block-content block-content-full bg-primary-dark clearfix" id="colored6">
                                     <span class="fa-stack text-white pull-right">
                                       <strong class="fa-stack-2x fa-lg">6</strong>
                                     </span>
@@ -91,18 +91,18 @@
        success: function(html) {
           $("#content").html("");
           $(html).hide().appendTo("#content").fadeIn(1000);
-          $("#colored1").removeClass('bg-flat');
-          $("#colored1").addClass('bg-success');
+          $("#colored1").removeClass('bg-primary-dark');
+          $("#colored1").addClass('bg-city');
           $("#colored2").addClass('bg-primary-dark');
-          $("#colored2").removeClass('bg-success');
-          $("#colored3").addClass('bg-warning');
-          $("#colored3").removeClass('bg-success');
-          $("#colored4").addClass('bg-amethyst');
-          $("#colored4").removeClass('bg-success');
-          $("#colored5").addClass('bg-city');
-          $("#colored5").removeClass('bg-success');
-          $("#colored6").addClass('bg-modern');
-          $("#colored6").removeClass('bg-success');
+          $("#colored2").removeClass('bg-city');
+          $("#colored3").addClass('bg-primary-dark');
+          $("#colored3").removeClass('bg-city');
+          $("#colored4").addClass('bg-primary-dark');
+          $("#colored4").removeClass('bg-city');
+          $("#colored5").addClass('bg-primary-dark');
+          $("#colored5").removeClass('bg-city');
+          $("#colored6").addClass('bg-primary-dark');
+          $("#colored6").removeClass('bg-city');
         }
       });
     });
@@ -113,18 +113,18 @@
        success: function(html) {
           $("#content").html("");
           $(html).hide().appendTo("#content").fadeIn(1000);
-          $("#colored1").addClass('bg-flat');
-          $("#colored1").removeClass('bg-success');
+          $("#colored1").addClass('bg-primary-dark');
+          $("#colored1").removeClass('bg-city');
           $("#colored2").removeClass('bg-primary-dark');
-          $("#colored2").addClass('bg-success');
-          $("#colored3").addClass('bg-warning');
-          $("#colored3").removeClass('bg-success');
-          $("#colored4").addClass('bg-amethyst');
-          $("#colored4").removeClass('bg-success');
-          $("#colored5").addClass('bg-city');
-          $("#colored5").removeClass('bg-success');
-          $("#colored6").addClass('bg-modern');
-          $("#colored6").removeClass('bg-success');
+          $("#colored2").addClass('bg-city');
+          $("#colored3").addClass('bg-primary-dark');
+          $("#colored3").removeClass('bg-city');
+          $("#colored4").addClass('bg-primary-dark');
+          $("#colored4").removeClass('bg-city');
+          $("#colored5").addClass('bg-primary-dark');
+          $("#colored5").removeClass('bg-city');
+          $("#colored6").addClass('bg-primary-dark');
+          $("#colored6").removeClass('bg-city');
         }
       });
     });
@@ -135,18 +135,18 @@
        success: function(html) {
           $("#content").html("");
           $(html).hide().appendTo("#content").fadeIn(1000);
-          $("#colored1").addClass('bg-flat');
-          $("#colored1").removeClass('bg-success');
+          $("#colored1").addClass('bg-primary-dark');
+          $("#colored1").removeClass('bg-city');
           $("#colored2").addClass('bg-primary-dark');
-          $("#colored2").removeClass('bg-success');
-          $("#colored3").removeClass('bg-warning');
-          $("#colored3").addClass('bg-success');
-          $("#colored4").addClass('bg-amethyst');
-          $("#colored4").removeClass('bg-success');
-          $("#colored5").addClass('bg-city');
-          $("#colored5").removeClass('bg-success');
-          $("#colored6").addClass('bg-modern');
-          $("#colored6").removeClass('bg-success');
+          $("#colored2").removeClass('bg-city');
+          $("#colored3").removeClass('bg-primary-dark');
+          $("#colored3").addClass('bg-city');
+          $("#colored4").addClass('bg-primary-dark');
+          $("#colored4").removeClass('bg-city');
+          $("#colored5").addClass('bg-primary-dark');
+          $("#colored5").removeClass('bg-city');
+          $("#colored6").addClass('bg-primary-dark');
+          $("#colored6").removeClass('bg-city');
         }
       });
     });
@@ -157,18 +157,18 @@
        success: function(html) {
           $("#content").html("");
           $(html).hide().appendTo("#content").fadeIn(1000);
-          $("#colored1").addClass('bg-flat');
-          $("#colored1").removeClass('bg-success');
+          $("#colored1").addClass('bg-primary-dark');
+          $("#colored1").removeClass('bg-city');
           $("#colored2").addClass('bg-primary-dark');
-          $("#colored2").removeClass('bg-success');
-          $("#colored3").addClass('bg-warning');
-          $("#colored3").removeClass('bg-success');
-          $("#colored4").removeClass('bg-amethyst');
-          $("#colored4").addClass('bg-success');
-          $("#colored5").addClass('bg-city');
-          $("#colored5").removeClass('bg-success');
-          $("#colored6").addClass('bg-modern');
-          $("#colored6").removeClass('bg-success');
+          $("#colored2").removeClass('bg-city');
+          $("#colored3").addClass('bg-primary-dark');
+          $("#colored3").removeClass('bg-city');
+          $("#colored4").removeClass('bg-primary-dark');
+          $("#colored4").addClass('bg-city');
+          $("#colored5").addClass('bg-primary-dark');
+          $("#colored5").removeClass('bg-city');
+          $("#colored6").addClass('bg-primary-dark');
+          $("#colored6").removeClass('bg-city');
         }
       });
     });
@@ -179,18 +179,18 @@
        success: function(html) {
           $("#content").html("");
           $(html).hide().appendTo("#content").fadeIn(1000);
-          $("#colored1").addClass('bg-flat');
-          $("#colored1").removeClass('bg-success');
+          $("#colored1").addClass('bg-primary-dark');
+          $("#colored1").removeClass('bg-city');
           $("#colored2").addClass('bg-primary-dark');
-          $("#colored2").removeClass('bg-success');
-          $("#colored3").addClass('bg-warning');
-          $("#colored3").removeClass('bg-success');
-          $("#colored4").addClass('bg-amethyst');
-          $("#colored4").removeClass('bg-success');
-          $("#colored5").removeClass('bg-city');
-          $("#colored5").addClass('bg-success');
-          $("#colored6").addClass('bg-modern');
-          $("#colored6").removeClass('bg-success');
+          $("#colored2").removeClass('bg-city');
+          $("#colored3").addClass('bg-primary-dark');
+          $("#colored3").removeClass('bg-city');
+          $("#colored4").addClass('bg-primary-dark');
+          $("#colored4").removeClass('bg-city');
+          $("#colored5").removeClass('bg-primary-dark');
+          $("#colored5").addClass('bg-city');
+          $("#colored6").addClass('bg-primary-dark');
+          $("#colored6").removeClass('bg-city');
         }
       });
     });
@@ -201,18 +201,18 @@
        success: function(html) {
           $("#content").html("");
           $(html).hide().appendTo("#content").fadeIn(1000);
-          $("#colored1").addClass('bg-flat');
-          $("#colored1").removeClass('bg-success');
+          $("#colored1").addClass('bg-primary-dark');
+          $("#colored1").removeClass('bg-city');
           $("#colored2").addClass('bg-primary-dark');
-          $("#colored2").removeClass('bg-success');
-          $("#colored3").addClass('bg-warning');
-          $("#colored3").removeClass('bg-success');
-          $("#colored4").addClass('bg-amethyst');
-          $("#colored4").removeClass('bg-success');
-          $("#colored5").addClass('bg-city');
-          $("#colored5").removeClass('bg-success');
-          $("#colored6").removeClass('bg-modern');
-          $("#colored6").addClass('bg-success');
+          $("#colored2").removeClass('bg-city');
+          $("#colored3").addClass('bg-primary-dark');
+          $("#colored3").removeClass('bg-city');
+          $("#colored4").addClass('bg-primary-dark');
+          $("#colored4").removeClass('bg-city');
+          $("#colored5").addClass('bg-primary-dark');
+          $("#colored5").removeClass('bg-city');
+          $("#colored6").removeClass('bg-primary-dark');
+          $("#colored6").addClass('bg-city');
         }
       });
     });

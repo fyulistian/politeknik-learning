@@ -10,6 +10,15 @@ class Course_model extends CI_Model {
         parent::__construct();
     }
 
+    public function total_course($id)
+    {
+        $this->db->select('id_course');
+        $this->db->from('course');
+        $this->db->where('nip', $id);
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
     function get_nim($param)
     {
         $this->db->from('user');
@@ -31,13 +40,13 @@ class Course_model extends CI_Model {
         $this->db->join('jurusan', 'jurusan.id_jurusan = kelas.id_jurusan');
         $this->db->join('tahun_ajaran', 'tahun_ajaran.id_tahun_ajaran = kelas.id_tahun_ajaran');
         $this->db->where('course.status', 'Available');
-        // $this->db->where('course.end_course >', $now);
+        $this->db->where('course.end_course >', $now);
         $this->db->where('mahasiswa.nim', $id);
         $this->db->group_by(array('soal.id_course'));
         return $this->db->get()->result();
     }
 
-    function get_download_course($id)
+    function get_download_course($id, $idk)
     {
         $this->db->from('diajar');
         $this->db->join('matakuliah', 'matakuliah.id_matakuliah = diajar.id_matakuliah');
@@ -47,7 +56,8 @@ class Course_model extends CI_Model {
         $this->db->join('mahasiswa', 'mahasiswa.nim = detail_kelas.nim');
         $this->db->join('jurusan', 'jurusan.id_jurusan = kelas.id_jurusan');
         $this->db->join('tahun_ajaran', 'tahun_ajaran.id_tahun_ajaran = kelas.id_tahun_ajaran');
-        $this->db->where('mahasiswa.nim', $id);
+        $this->db->where('detail_kelas.nim', $id);
+        $this->db->where('kelas.id_kelas', $idk);
         return $this->db->get()->result();
     }
 

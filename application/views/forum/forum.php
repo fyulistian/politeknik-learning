@@ -14,7 +14,11 @@
             </ul>
             <ul class="block-options block-options-left">
 		        <li>
-		            <button onclick="start_forum()" data-toggle="tooltip" data-placement="right"data-original-title="Start New One"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;New Topic</button>
+                <?php if (empty($data_course))  { ?>
+                    <button onclick="zero_forum()" data-toggle="tooltip" data-placement="right"data-original-title="Start New One"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;New Topic</button>  
+                <?php } else { ?>
+                    <button onclick="start_forum()" data-toggle="tooltip" data-placement="right"data-original-title="Start New One"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;New Topic</button>
+                <?php } ?>
 		        </li>
 		    </ul>
         </div>
@@ -31,9 +35,9 @@
                     </tr>
                 </thead>
                 <tbody>
-				<?php $user = $this->session->userdata('email');
-    			$nip = $this->Dosen_model->my_nip($user);
-                $data_forum  = $this->Forum_model->get_all_query($course->id_course, $nip); ?>
+                <?php $user = $this->session->userdata('email');
+                $nip        = $this->Dosen_model->my_nip($user);
+                $data_forum = $this->Forum_model->get_all_query($course->id_course, $nip); ?>
                     <?php foreach ($data_forum as $forum) { ?>
                     <tr>
                         <td class="text-center" style="width: 75px;">
@@ -69,7 +73,7 @@
     </div>
 </div>
 
-	<div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+	<div class="modal animated zoomIn" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -99,7 +103,11 @@
                                     <div class="col-sm-12">
                                         <div class="form-material form-material-primary">
                                             <label for="material-select">Course</label>
-                                            <?= cmb_dinamis('id_course','course','nama_course','id_course','nama_course') ?><br/>
+                                            <select class='form-control' name='id_course' size='1'>
+                                                <?php foreach ($getIt as $key) { ?>
+                                                    <?php echo '<option name='.$key->id_course.' value='.$key->id_course.'>'.$key->nama_course.'</option>' ?>
+                                                <?php } ?>
+                                            </select>
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
@@ -133,6 +141,10 @@
     function reload_table()
     {
         location.reload();
+    }
+
+    function zero_forum() {
+        swal("Course Not Found !", "Please Add Course Before Start Forum", "error");   
     }
 
     function start_forum()
@@ -206,6 +218,7 @@
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
+                // console.log(jqXHR, textStatus, errorThrown);
                 swal("Oops", "We couldn't connect to the server !", "error");
                 $('#btnSave').text('save'); 
                 $('#btnSave').attr('disabled',false); 

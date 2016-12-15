@@ -15,6 +15,14 @@ class Jurusan_model extends CI_Model
         parent::__construct();
     }
 
+    public function total_major()
+    {
+        $this->db->select($this->id);
+        $this->db->from($this->table);
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
     function valid_id($param1)
     {
         $this->db->from('jurusan');

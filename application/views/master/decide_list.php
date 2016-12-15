@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInLeft" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -67,8 +67,12 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <div class="form-material form-material-primary">
-                                            <label for="material-select">Major</label>
-                                            <?= cmb_dinamis('id_matakuliah','matakuliah','nama_matakuliah','id_matakuliah','nama_matakuliah') ?>
+                                            <label for="material-select">Courses</label>
+                                            <select class='form-control' name='id_matakuliah' size='1'>
+                                                <?php foreach ($value1 as $key) { ?>
+                                                    <?php echo '<option name='.$key->id_matakuliah.' value='.$key->id_matakuliah.'>'.$key->nama_matakuliah.'</option>' ?>
+                                                <?php } ?>
+                                            </select>
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
@@ -85,7 +89,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInRight" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -110,7 +114,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-material form-material-primary">
                                             <label for="material-color-primary">SKS</label>
-                                            <input class="form-control" type="text" name="sks">
+                                            <input class="form-control" type="text" name="sks" disabled="">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>

@@ -1,7 +1,10 @@
 <div class="content content-boxed">
-    <!-- User Header -->
-    <!-- Basic Info -->
     <div class="block">
+        <?php if ($this->session->flashdata('notification')) { ?>
+            <div class="alert alert-info" id="error-alert"> 
+                <i class="si si-info fa-lg"></i> &nbsp;<?= $this->session->flashdata('notification') ?> 
+            </div>
+        <?php } ?>
         <?php $a = base_url('template/img/photos/photo27@2x.jpg'); ?>
         <div class="bg-image" style="background-image: url('<?= $a ?>');">
             <div class="block-content text-center overflow-hidden">
@@ -25,14 +28,10 @@
             </div>
         </div>
     </div>
-    <!-- END Basic Info -->
     <?php if ($this->session->userdata('level') != "administrator") { ?>
-        <a href="javascript:void(0)" type="file" onclick="document.getElementById('upload').click();" return false><i class="fa fa-camera fa-2x" style=" margin-top: -7px; margin-left: 1183px;"></i></a>
+        <a href="javascript:void(0)" type="file" onclick="document.getElementById('upload').click();" return false><i class="fa fa-camera fa-2x" style=" margin-top: -7px; margin-left: 983px;"></i></a>
     <?php } ?>
 </div>
-<!-- END User Header -->
-
-<!-- Main Content -->
 <form action="<?php echo base_url('auth/editpersonal') ?>" method="POST" enctype="multipart/form-data">
 <?php if ($this->session->userdata('level')!="administrator") { ?>
     <input type="file" id="upload" class="example-file-input" name="userfile" style="visibility: hidden; width: 1px; height: 1px" >
@@ -77,21 +76,23 @@
         </div>
     </div>
 </form>
-<!-- END Main Content -->
-
 <script src="<?php echo base_url('template/js/jquery-1.11.2.min.js') ?>"></script>
 <script type="text/javascript">
+    $("#error-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $("#error-alert").slideUp(500);
+    });
+
     $(function() {
         $(".example-file-input").on("change", function()
         {
             var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+            if (!files.length || !window.FileReader) return;
 
-            if (/^image/.test( files[0].type)){ // only image file
-                var reader = new FileReader(); // instance of the FileReader
-                reader.readAsDataURL(files[0]); // read the local file
+            if (/^image/.test( files[0].type)) {
+                var reader = new FileReader(); 
+                reader.readAsDataURL(files[0]);
 
-                reader.onloadend = function(){ // set image data as background of div
+                reader.onloadend = function() {
                     $("#imagePreview").attr("src",this.result);
                 }
             }

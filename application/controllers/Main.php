@@ -42,8 +42,18 @@ class Main extends CI_Controller {
                          );
                 $this->template->load('home','home/me', $data);
             } else if ($this->session->userdata('level') == 'dosen') {
+                $this->load->model('Group_model');
+                $this->load->model('Forum_model');
+                $this->load->model('Course_model');
+                $this->load->model('Upload_model');
+                $this->load->model('Dosen_model');
                 $data['email']      = $this->session->userdata('email');
                 $data['level']      = $this->session->userdata('level');
+                $data['nip']        = $this->Dosen_model->my_nip($data['email']);
+                $data['totGro']     = $this->Group_model->total_group($data['nip']);
+                $data['totFor']     = $this->Forum_model->total_forum($data['nip']);
+                $data['totMat']     = $this->Upload_model->total_file($data['nip']);
+                $data['totUji']     = $this->Course_model->total_course($data['nip']);
                 $data['soal']       = '';
                 $data['forum']      = '';
                 $data['group']      = '';
@@ -60,8 +70,16 @@ class Main extends CI_Controller {
                 $data['dashboard']  = 'active';
                 $this->template->load('template','banner', $data);
             } else {
+                $this->load->model('Mahasiswa_model');
+                $this->load->model('Dosen_model');
+                $this->load->model('Jurusan_model');
+                $this->load->model('Matakuliah_model');
                 $data['email']      = $this->session->userdata('email');
                 $data['level']      = $this->session->userdata('level');
+                $data['totCol']     = $this->Mahasiswa_model->total_collager();
+                $data['totLec']     = $this->Dosen_model->total_lecturer();
+                $data['totMaj']     = $this->Jurusan_model->total_major();
+                $data['totCou']     = $this->Matakuliah_model->total_courses();
                 $data['soal']       = '';
                 $data['user']       = '';
                 $data['forum']      = '';

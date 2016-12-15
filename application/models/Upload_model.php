@@ -15,6 +15,16 @@ class Upload_model extends CI_Model
         parent::__construct();
     }
 
+    public function total_file($id)
+    {
+        $this->db->select($this->id);
+        $this->db->from($this->table);
+        $this->db->join('course', 'course.id_course = materi.id_course');
+        $this->db->where('course.nip', $id);
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
     // get all
     function get_all()
     {

@@ -20,17 +20,17 @@ class Mahasiswa extends CI_Controller
 
         $data = array(
                 'mahasiswa_data' => $mahasiswa,
-                'user'       => '',
-                'dosen'      => '',
-                'angkatan'   => '',
-                'matakuliah' => '',
-                'group'      => '',
-                'diajar'     => '',
-                'kelas'      => '',
-                'jurusan'    => '',
-                'mengajar'   => '',
-                'mahasiswa'  => 'active',
-                'dashboard'  => '',
+                'user'           => '',
+                'dosen'          => '',
+                'angkatan'       => '',
+                'matakuliah'     => '',
+                'group'          => '',
+                'diajar'         => '',
+                'kelas'          => '',
+                'jurusan'        => '',
+                'mengajar'       => '',
+                'mahasiswa'      => 'active',
+                'dashboard'      => '',
         );
         $this->template->load('template','master/mahasiswa_list', $data);
     }
@@ -131,7 +131,7 @@ class Mahasiswa extends CI_Controller
                     'email'         => strtolower($this->input->post('email')),
                     'nama_user'     => strtolower($nama_user),
                     'password'      => password_hash($pass,PASSWORD_BCRYPT,$options),
-                    'level'         => strtolower($this->input->post('level')),
+                    'level'         => 'mahasiswa',
             );
         $save   = $this->Login_model->insert($user);
         $insert = $this->Mahasiswa_model->insert($field);
@@ -144,7 +144,8 @@ class Mahasiswa extends CI_Controller
         if (!$mahasiswa->gambar == './uploads/img/default.jpg') {
             if(file_exists($mahasiswa->gambar) && $mahasiswa->gambar) unlink($mahasiswa->gambar);   
         }
-        $this->Mahasiswa_model->delete($nim);
+        $param = $this->Mahasiswa_model->my_email($nim);
+        $this->Mahasiswa_model->delete($param);
         echo json_encode(array("status" => TRUE));
     }
 

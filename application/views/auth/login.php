@@ -26,18 +26,16 @@
         <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url('template/img/favicons/apple-touch-icon-152x152.png') ?>">
         <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url('template/img/favicons/apple-touch-icon-180x180.png') ?>">
         <!-- END Icons -->
+
         <!-- Stylesheets -->
         <!-- Web fonts -->
-        <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700"> -->
-        <link rel='stylesheet' href="<?php echo base_url() ?>template/css/sourcesanspro.css">
+        <link rel='stylesheet' href="<?php echo base_url('template/css/sourcesanspro.css') ?>">
+
         <!-- Bootstrap and OneUI CSS framework -->
         <link rel="stylesheet" href="<?php echo base_url('template/css/bootstrap.min.css') ?>">
         <link rel="stylesheet" id="css-main" href="<?php echo base_url('template/css/oneui.css') ?>">
-        <link rel="stylesheet" id="css-main" href="<?php echo base_url() ?>template/css/themes/city.min.css">
+        <link rel="stylesheet" id="css-main" href="<?php echo base_url('template/css/themes/city.min.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('template/css/sweetalert2.css') ?>">
-
-        <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-        <!-- <link rel="stylesheet" id="css-theme" href="template/css/themes/flat.min.css"> -->
         <!-- END Stylesheets -->
     </head>
     <body>

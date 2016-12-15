@@ -40,7 +40,7 @@
             <div class="block-header bg-gray-lighter">
                 <h3 class="block-title">
                     <i class="fa fa-star text-warning" data-toggle="tooltip" title="" data-original-title="Course"></i>
-                    <?php echo $file->nama_course ?>
+                    <?php echo $file->nama_matakuliah ?>
                 </h3>
             </div>
         <div class="block-content">

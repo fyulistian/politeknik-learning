@@ -13,14 +13,16 @@ class Forum extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('Dosen_model');
-		$course = $this->Forum_model->get_all_query_group_by();
-		$user = $this->session->userdata('email');
-        $nip = $this->Dosen_model->my_nip($user);
+        $user      = $this->session->userdata('email');
+        $nip       = $this->Dosen_model->my_nip($user);
+        $course    = $this->Forum_model->get_all_query_group_by($nip);
+        $getCourse = $this->Forum_model->getCourse($nip);
         $data = array(
-        		'data_course' => $course,
+                'data_course' => $course,
+                'getIt'       => $getCourse,
 	            'nip'   	  => $nip,
 	            'dashboard'   => '',
-                'group'      => '',
+                'group'       => '',
 	            'soal'        => '',
 	            'forum'       => 'active',
 	            'upload'      => ''

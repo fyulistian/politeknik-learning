@@ -49,8 +49,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-dialog-top">
+    <div class="modal animated fadeInRight" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-top ">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
                     <div class="block-header bg-primary-dark">
@@ -111,14 +111,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-material form-material-primary">
                                             <label for="material-color-primary">Email</label>
                                             <input class="form-control" type="text" name="email" maxlength="35">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
-                                    <div id="level"></div>
+                                    <!-- <div id="level"></div> -->
                                 </div>
                                 <div class="form-group">
                                 <div class="col-sm-6">
@@ -148,7 +148,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInRight" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -176,19 +176,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-4">
-                                    <div class="form-material">
-                                        <input class="form-control" type="text" id="material-disabled" name="nama_jurusan" disabled="">
-                                        <label for="material-disabled">Major</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <div class="form-material">
                                         <input class="form-control" type="text"  id="material-disabled" name="email" disabled="">
                                         <label for="material-disabled">Email</label>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <div class="form-material">
                                         <input class="form-control" type="text"  id="material-disabled" name="gender" disabled="">
                                         <label for="material-disabled">Gender</label>
@@ -222,8 +216,6 @@
 
 </section>
 <script src="<?php echo base_url('template/js/jquery-1.11.2.min.js') ?>"></script>
-<script src="<?php echo base_url('template/js/plugins/datatables/dataTables.bootstrap.js') ?>"></script>
-<script src="<?php echo base_url('template/js/plugins/datatables/jquery.dataTables.js') ?>"></script>
 <script src="<?php echo base_url('template/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
 <script type="text/javascript" >
     var save_method;
@@ -259,7 +251,6 @@
                 $('#fullName').html('<h2 class="h4 font-w600 text-brown push-5">'+data.nama_depan+", "+data.nama_belakang+'</h2>');
                 $('[name="email"]').val(data.email);
                 $('[name="gender"]').val(data.gender);
-                $('[name="nama_jurusan"]').val(data.nama_jurusan);
                 $('[name="tempat_lahir"]').val(data.tempat_lahir);
                 $('[name="tanggal_lahir"]').datepicker('update',data.tanggal_lahir);
                 $('#modal-detail').modal('show');
@@ -279,7 +270,7 @@
         $('.form-group').removeClass('has-error');
         $('.help-block').empty();
         $('#imagePreview').html('<img src="'+base_url+photo+'" class="img-avatar img-avatar96 img-avatar-thumb">');
-        $('#level').html('<div class="form-group"><div class="col-sm-6"><div class="form-material form-material-primary"><label for="material-color-primary">As</label><select class="form-control" id="material-color-primary" name="level" size="1"><option value="dosen">Dosen</option><option value="mahasiswa" selected>Mahasiswa</option></select><span class="help-block"></span></div></div></div>');
+        // $('#level').html('<div class="form-group"><div class="col-sm-6"><div class="form-material form-material-primary"><label for="material-color-primary">As</label><select class="form-control" id="material-color-primary" name="level" size="1"><option value="dosen">Dosen</option><option value="mahasiswa" selected>Mahasiswa</option></select><span class="help-block"></span></div></div></div>');
         $('#nim').attr('disabled',false);
         $('#modal_form').modal('show');
         $('.modal-title').text('Add Data Colleger');
@@ -340,7 +331,7 @@
             {   
                 $('#nim').attr('disabled',true);
                 $('#imagePreview').html('<img src="'+base_url+data.gambar+'" class="img-avatar img-avatar96 img-avatar-thumb">');
-                $('#level').html('');
+                // $('#level').html('');
                 $('[name="code"]').val(data.nim);
                 $('[name="nim"]').val(data.nim);
                 $('[name="nama_depan"]').val(data.nama_depan);

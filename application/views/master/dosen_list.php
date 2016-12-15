@@ -15,8 +15,8 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Gender</th>
-                        <th>Date of Birth</th>
-                        <th>Place of Birth</th>
+                        <th>DOB</th>
+                        <th>POB</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInRight" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -77,8 +77,8 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <div class="form-material form-material-primary">
-                                            <label for="material-color-primary">Code</label>
-                                            <input class="form-control" type="text" id="nip" name="nip" maxlength="21">
+                                            <label for="material-color-primary">NIDN</label>
+                                            <input class="form-control" type="text" id="nidn" name="nidn" maxlength="10">
                                             <span class="help-block"></span>
                                         </div>    
                                     </div>
@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-material form-material-primary">
                                             <label for="material-select">Gender</label>
                                             <select class="form-control" id="material-color-primary" name="gender" size="1">
@@ -110,7 +110,7 @@
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
-                                    <div id="level"></div>
+                                    <!-- <div id="level"></div> -->
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
@@ -149,7 +149,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInRight" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -176,6 +176,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="form-material form-material-primary">
+                                            <label for="material-color-primary">NIDN</label>
+                                            <input class="form-control" type="text" id="nidn" name="nidn" disabled="">
+                                            <span class="help-block"></span>
+                                        </div>    
+                                    </div>
+                                </div>
                             <div class="form-group">
                                 <div class="col-sm-6">
                                     <div class="form-material">
@@ -253,6 +262,7 @@
                 
                 $('#preview').html('<img src="'+base_url+data.gambar+'" class="img-avatar img-avatar96 img-avatar-thumb">');
                 $('#fullName').html('<h2 class="h4 font-w600 text-brown push-5">'+data.nama_depan+", "+data.nama_belakang+'</h2>');
+                $('[name="nidn"]').val(data.nidn);
                 $('[name="email"]').val(data.email);
                 $('[name="gender"]').val(data.gender);
                 $('[name="tempat_lahir"]').val(data.tempat_lahir);
@@ -275,7 +285,7 @@
         $('.form-group').removeClass('has-error');
         $('.help-block').empty();
         $('#imagePreview').html('<img src="'+base_url+photo+'" class="img-avatar img-avatar96 img-avatar-thumb">');
-        $('#level').html('<div class="form-group"><div class="col-sm-6"><div class="form-material form-material-primary"><label for="material-color-primary">As</label><select class="form-control" id="material-color-primary" name="level" size="1"><option value="dosen" selected>Dosen</option><option value="mahasiswa">Mahasiswa</option></select><span class="help-block"></span></div></div></div>');
+        // $('#level').html('<div class="form-group"><div class="col-sm-6"><div class="form-material form-material-primary"><label for="material-color-primary">As</label><select class="form-control" id="material-color-primary" name="level" size="1"><option value="dosen" selected>Dosen</option><option value="mahasiswa">Mahasiswa</option></select><span class="help-block"></span></div></div></div>');
         $('#nip').attr('disabled',false);
         $('#modal_form').modal('show');
         $('.modal-title').text('Add Data Lecturer');
@@ -295,9 +305,10 @@
             {
                 $('#nip').attr('disabled',true);
                 $('#imagePreview').html('<img src="'+base_url+data.gambar+'" class="img-avatar img-avatar96 img-avatar-thumb">');
-                $('#level').html('');
+                // $('#level').html('');
                 $('[name="code"]').val(data.nip);
                 $('[name="nip"]').val(data.nip);
+                $('[name="nidn"]').val(data.nidn);
                 $('[name="nama_depan"]').val(data.nama_depan);
                 $('[name="nama_belakang"]').val(data.nama_belakang);
                 $('[name="gender"]').val(data.gender);
@@ -348,6 +359,7 @@
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
+                console.log(jqXHR, textStatus, errorThrown);
                 swal("Oops", "We couldn't connect to the server !", "error");
                 $('#btnSave').text('save'); 
                 $('#btnSave').attr('disabled',false); 

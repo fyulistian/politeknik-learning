@@ -66,6 +66,8 @@ class Auth_model extends CI_Model {
         $ck = $this->db->get();
         if ($ck->num_rows()>0){
             return $ck->row_array();
+        } else {
+        	return false;
         }
     }
 

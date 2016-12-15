@@ -7,6 +7,21 @@ class Group_model extends CI_Model {
     public $id = 'id_group';
     public $order = 'DESC';
 
+    function my_class($nim)
+    {
+        $data = $this->db->query("SELECT * FROM detail_kelas WHERE nim = '$nim' ")->result_array();
+        return $data[0]['id_kelas'];
+    }
+
+    public function total_group($id)
+    {
+        $this->db->select($this->id);
+        $this->db->from($this->table);
+        $this->db->where('nip', $id);
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
 	function get_group_by($nip)
 	{
 		$this->db->from('group');
@@ -39,16 +54,18 @@ class Group_model extends CI_Model {
 
     function get_group($id)
     {
-        $this->db->from('detail_group');
-        $this->db->join('group', 'group.id_group = detail_group.id_group');
-        $this->db->join('mahasiswa', 'mahasiswa.nim = detail_group.nim');
+        $this->db->from('group');
+        $this->db->join('detail_group', 'detail_group.id_group = group.id_group');
+        $this->db->join('kelas', 'kelas.id_kelas = detail_group.id_kelas');
+        $this->db->join('detail_kelas', 'detail_kelas.id_kelas = kelas.id_kelas');
+        $this->db->join('mahasiswa', 'mahasiswa.nim = detail_kelas.nim');
         $this->db->where('group.id_group', $id);
         return $this->db->get()->result();
     }
 
     function get_detail($id)
     {
-        $this->db->select('nim');
+        $this->db->select('id_kelas');
         $this->db->from('detail_kelas');
         $this->db->where('id_kelas', $id);
         return $this->db->get()->result();
@@ -75,9 +92,11 @@ class Group_model extends CI_Model {
         return $this->db->get()->row();
     }
 
-    function get_all_group()
+    function get_all_group($idk)
     {
         $this->db->from($this->table);
+        $this->db->join('detail_group', 'detail_group.id_group = group.id_group');
+        $this->db->where('detail_group.id_kelas', $idk);
         return $this->db->get()->result();   
     }
 
@@ -125,7 +144,7 @@ class Group_model extends CI_Model {
         $this->db->where('id_group', $id);
         $this->db->delete($this->table);
     }
-
+    
     function delete_member($id)
     {
         $this->db->where('id_group', $id);

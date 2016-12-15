@@ -36,11 +36,11 @@ class Kelas extends CI_Controller
 
     public function open($id)
     {
-        $kelas = $this->Kelas_model->get_id($id);
-        $jurusan = $kelas['0']->id_jurusan;
-        $smt      = $this->Decide_model->get_smt($id);
-        $semester = $smt->semester;
-        $class    = $smt->nama_kode.' '.$smt->tahun_masuk.' '.$smt->nama_kelas;
+        $kelas     = $this->Kelas_model->get_id($id);
+        $jurusan   = $kelas['0']->id_jurusan;
+        $smt       = $this->Decide_model->get_smt($id);
+        $semester  = $smt->semester;
+        $class     = $smt->nama_kode.' '.$smt->tahun_masuk.' '.$smt->nama_kelas;
         $mahasiswa = $this->Kelas_model->get_mhs($jurusan, $id);
         $data = array(
             'mhs_data'   => $mahasiswa,
@@ -127,12 +127,12 @@ class Kelas extends CI_Controller
     {
         $data = array();
         $data['error_string'] = array();
-        $data['inputerror'] = array();
+        $data['inputerror']   = array();
         $data['status'] = TRUE;
-        $param1    = $this->input->post('nim');
-        $param2    = $this->input->post('id_kelas');
-        $check = $this->Kelas_model->valid_nim($param1);
-        $check = count($check) ;
+        $param1 = $this->input->post('nim');
+        $param2 = $this->input->post('id_kelas');
+        $check  = $this->Kelas_model->valid_nim($param1);
+        $check  = count($check);
         if($check > 0)
         {
             $data['inputerror'][] = 'nim';

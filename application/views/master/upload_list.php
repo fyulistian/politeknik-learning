@@ -34,8 +34,8 @@
                                 <td><?php echo $upload->tanggal_upload ?></td>
                                 <td style="text-align:center" width="160px">
                                     <?php
-                                        echo '<a class="btn btn-xs btn-default btn-square" href="javascript:void(0)" onclick="download_file('."'".$upload->nama_materi."'".')" data-toggle="tooltip" data-placement="bottom" data-original-title="Download File"><i class="si si-cloud-download"></i></a>'; 
-                                        echo '  ';
+                                        // echo '<a class="btn btn-xs btn-default btn-square" href="javascript:void(0)" onclick="download_file('."'".$upload->nama_materi."'".')" data-toggle="tooltip" data-placement="bottom" data-original-title="Download File"><i class="si si-cloud-download"></i></a>'; 
+                                        // echo '  ';
                                         echo '<a class="btn btn-xs btn-default btn-square" href="javascript:void(0)" onclick="detail_file('."'".$upload->id_materi."'".')" data-toggle="tooltip" data-placement="bottom" data-original-title="Detail File"><i class="fa fa-eye"></i></a>';
                                         echo '  ';
                                         echo '<a class="btn btn-xs btn-default btn-square" href="javascript:void(0)" onclick="edit_file('."'".$upload->id_materi."'".')" data-toggle="tooltip" data-placement="bottom" data-original-title="Edit File"><i class="fa fa-pencil-square-o"></i></a>';
@@ -51,7 +51,7 @@
         </div>
     </div>
     
-    <div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInRight" id="modal_edit" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -91,9 +91,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-4"></div>
-                                    <div class="col-sm-4"></div>
-                                    <div class="col-sm-4" id="remove-file">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-5"></div>
+                                    <div class="col-sm-5" id="remove-file">
                                         <div class="form-material">
                                             <input class="form-control" type="text" name="tanggal_upload" disabled="">
                                             <label for="material-disabled">Upload Date</label>
@@ -112,7 +112,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInLeft" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
@@ -175,7 +175,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated zoomIn" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">

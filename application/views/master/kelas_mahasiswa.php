@@ -33,7 +33,7 @@
                     <td><?php echo ucfirst($kelas->nama_depan).' '.ucfirst($kelas->nama_belakang) ?></td>
                     <td style="text-align:center" width="140px">
                     <?php
-                    echo '<a class="btn btn-xs btn-default btn-square" href="javascript:void(0)" onclick="delete_kelas('."'".$kelas->nim."'".')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete Classroom"><i class="fa fa-trash-o"></i></a>'; 
+                    echo '<a class="btn btn-xs btn-default btn-square" href="javascript:void(0)" onclick="delete_kelas('."'".$kelas->nim."'".')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete Colleger"><i class="fa fa-trash-o"></i></a>'; 
                     ?>
                     </td>
                 </tr>
@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal animated fadeInLeft" id="modal_form" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-top">
             <div class="modal-content">
                 <div class="block block-themed block-transparent remove-margin-b">
