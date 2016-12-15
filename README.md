@@ -24,20 +24,25 @@ You can also:
 politeknik-learning uses a number of open source plugins :
 
 * [Codeigniter] - Lightweight Framework for web apps!
-* [Twitter Bootstrap + Materialize] - great UI boilerplate for modern web apps
+* [Twitter Bootstrap] [Materialize] - great UI boilerplate for modern web apps
 * [jQuery] - duh, can't explain it :D
 
 ### Installation
 Download and extract the [latest pre-built release](https://github.com/fyulistian/politeknik-learning).
+> Move the App to your installed [XAMPP] application. and then put to “…/XAMPP/htdocs/“
+
+> Now type the following url in your browser “http://localhost/politeknik-learning“
 
 License
 MIT
 
 
-**Free Software!!!**
+**Free Software**
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
    [codeigniter]: <http://codeigniter.com>
-   [Twitter Bootstrap + Materialize]: <http://twitter.github.com/bootstrap/>
+   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
+   [Materialize]: <http://github.com/Dogfalo/materialize>
    [jQuery]: <http://jquery.com>
+   [XAMPP]: <http://apachefriends.org/index.html.com>
